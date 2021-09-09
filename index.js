@@ -30,8 +30,9 @@ app.get('/resource/cpu', (req, res) => {
 
 app.get('/resource/ram', (req, res) => {
 	shell.exec(PATH + '/ramAvalible.sh');
-	const ramAvalible = fs.readFileSync(PATH + '/dataLogs/logLastStatusRAM.log', 'utf8');
-	console.log(ramAvalible);
+	const data = fs.readFileSync(PATH + '/dataLogs/logLastStatusRAM.log', 'utf8');
+	let ramAvalible = data.split(' ')[10];
+	console.log(ramAvalible)
 	res.send({ramAvalible})
 });
 
