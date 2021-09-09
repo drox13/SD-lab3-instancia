@@ -22,7 +22,6 @@
   },
   "dependencies": {
     "axios": "^0.21.4",
-    "exec-sync": "file:node_modules/node-exec-sync",
     "express": "^4.17.1",
     "mysql": "^2.18.1",
     "shelljs": "^0.8.4"

@@ -15,13 +15,13 @@ const PATH = process.cwd();
 //     database: 'todoapp'
 // });
 
-execSync(PATH + `/database/startdb.sh`);
+//execSync(PATH + `/database/startdb.sh`);
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-//shell.exec-sync(PATH + `/database/startdb.sh`);
+shell.exec(PATH + `/database/startdb.sh`);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
