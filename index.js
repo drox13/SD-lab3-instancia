@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const shell = require('shelljs');
 const mysql = require('mysql');
+const fs = require('fs');
 
 //const execSync = require("exec-sync");
 const port = 3000;
@@ -21,23 +22,17 @@ app.get('/', (req, res) => {
 });
 
 app.get('/resource/cpu', (req, res) => {
-	const cpuData = shell.exec(PATH + '/cpuUsage.ps1');
-	if (cpuData != null) {
-		console.log(cpuData);
-		res.send(cpuData);
-	} else {
-		console.log('error');
-	}
+	shell.exec(PATH + '/cpuUsage.sh');
+	const cpuUsage = fs.readFileSync(PATH + '/dataLogs/logLastStatusCPU.log', 'utf8');
+	console.log(cpuUsage);
+	res.send({cpuUsage});
 });
 
 app.get('/resource/ram', (req, res) => {
-	const ramFreeData = shell.exec(PATH + '/ramAvalible.sh');
-	console.log(ramFreeData);
-	if (cpuData != null) {
-		res.send(ramFreeData);
-	} else {
-		console.log('error');
-	}
+	shell.exec(PATH + '/ramAvalible.sh');
+	const ramAvalible = fs.readFileSync(PATH + '/dataLogs/logLastStatusRAM.log', 'utf8');
+	console.log(ramAvalible);
+	res.send({ramAvalible})
 });
 
 shell.exec(PATH + `/database/startdb.sh`);
