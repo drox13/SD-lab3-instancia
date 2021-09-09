@@ -36,7 +36,22 @@ app.get('/resource/ram', (req, res) => {
 	res.send({ramAvalible})
 });
 
-shell.exec(PATH + `/database/startdb.sh`);
+
+//--------------
+// function second() {
+// 	app.listen(port, () => {
+// 	  console.log(`Example app listening at http://localhost:${port}`)
+// 	})
+//   }
+  
+//   function init_bd() {
+// 	shell.exec(PATH + `/database/startdb.sh`);
+//   }
+  
+//   function go() {
+// 	init_bd()
+// 	second();
+//   }
 
 app.listen(port, () => {
 	console.log(`Example app listening at http://localhost:${port}`);
